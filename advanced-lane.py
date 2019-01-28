@@ -296,7 +296,7 @@ class Lane():
 
 
     def color_binary_pipeline(self, img, s_thresh=(225, 240), sx_thresh=(20, 100), r_tresh=(125, 255)):
-        img = np.copy(img)
+        
         # Convert to HLS color space and separate the V channel
         hls = cv2.cvtColor(img, cv2.COLOR_RGB2HLS)
         l_channel = hls[:, :, 1] # L channel from HLS
@@ -322,13 +322,13 @@ class Lane():
         s_binary[(s_channel >= s_thresh[0]) & (s_channel <= s_thresh[1])] = 1
         s_binary[img.shape[0]-150:, :] = 0  #remove car hood pixels
 
-
+        # Isolate yellow color from L channel of HLS image
         hls_yellow = np.zeros_like(hls[:,:,0])
         hls_yellow[((hls[:,:,0] >= 15) & (hls[:,:,0] <= 35))
                     & ((hls[:,:,1] >= 30) & (hls[:,:,1] <= 205))
                     & ((hls[:,:,2] >= 115) & (hls[:,:,2] <= 255))                
                     ] = 1
-
+        # Yellow from R channel of RGB
         r_binary = np.zeros_like(r_channel)
         r_binary[(r_channel >= r_tresh[0]) & (r_channel <= r_tresh[1])] = 1
         r_binary[img.shape[0]-30:, :] = 0
@@ -418,7 +418,7 @@ class Lane():
         lane_middle =  (right_line - left_line)/2. + left_line  
     
         diff_from_center = (image_center - lane_middle) * xm_per_pix
-    
+        # Check if the car is left or right from the center
         if (diff_from_center > 0):
             side = "right"
         else:
@@ -459,11 +459,11 @@ class Lane():
         x_offset_bottom = 120
         y_offset = 90
         cam_x_offset = 100
-    
+        # Compute source and target points
         src = np.float32([[x_offset_bottom, image_height], [image_width/2 - x_offset_top, image_height/2 + y_offset], [image_width/2 + x_offset_top, image_height/2 + y_offset],[image_width - x_offset_bottom, image_height]])
         dst = np.float32([[x_offset_bottom + cam_x_offset, image_height], [x_offset_bottom, 0], [image_width - x_offset_bottom, 0], [image_width - x_offset_bottom - cam_x_offset, image_height]])
     
-
+        # Compute M and Minv for warpPerspective
         M = cv2.getPerspectiveTransform(src, dst)
         Minv = cv2.getPerspectiveTransform(dst, src)
         warped = cv2.warpPerspective(image, M, (image_width, image_height), flags=cv2.INTER_LINEAR)
@@ -504,7 +504,7 @@ class Lane():
 
         # Draw the lane onto the warped blank image
         cv2.fillPoly(warped, np.int_([pts]), (0, 255, 0))
-    
+        # Unwarp the image with plotted lane
         img_size = (width,height)
         unwarped = cv2.warpPerspective(warped, Minv, img_size, flags=cv2.INTER_LINEAR)
     
@@ -638,18 +638,18 @@ dist = dist_pickle["dist"]
 # -------------------------------------------------------------------
 
 
-video =  True
-video2 =  False 
+video =  True   # True to process project_video.mp4
+video2 =   False  # True to process challenge_video.mp4
 
-show_combined_thresholds = False
+show_combined_thresholds = False # True to show image with combined thresholds
 debug = False
-draw_lines =  False
+draw_lines =  True   # True to result image while generation video
 
-lane = Lane(mtx,dist)
+lane = Lane(mtx,dist)  # Create Lane object and pass mtx,dist for correction of image distortion
 
 
 # -------------------------------------------------------------------
-# Test images
+# Process test images from test_images frolder
 test_images = False
  
 if test_images:

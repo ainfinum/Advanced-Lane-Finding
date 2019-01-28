@@ -111,7 +111,7 @@ Below are examples of the warped images showing that lines appears parallel:
 
 ## 4. Color transforms, gradients methods to create a thresholded binary image.
 
-I used a combination of color and gradient thresholds (L and S channel from HLS and Red channel from RGB images ) to generate binary images ( `color_binary_pipeline` lines #298-336, file `advanced-lane.py`). I applied the Sobel operator to the lightness value of the HLS image `color_binary_pipeline()` ( lines #309-312 file `advanced-lane.py`). I used a combination of the magnitude of the gradient and the direction of the gradient. I isolated yellow and white colors from the original image converted to HSV color space ( lines #301, #326-330 file `advanced-lane.py`) 
+I used a combination of color and gradient thresholds (L and S channel from HLS and Red channel from RGB images ) to generate binary images ( `color_binary_pipeline` lines #298-336, file `advanced-lane.py`). I applied the Sobel operator to the lightness value of the HLS image `color_binary_pipeline()` ( lines #309-312 file `advanced-lane.py`). I used a combination of the magnitude of the gradient and the direction of the gradient. I isolated yellow and white colors from the original image converted to HLS color space ( lines #301, #326-330 file `advanced-lane.py`) 
 The example of my output:
 
 ![alt text][image8]
