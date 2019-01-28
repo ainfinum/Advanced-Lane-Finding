@@ -191,7 +191,7 @@ Here are examples of my result:
 
 ## 1. Final video output.  
 
-Here's a [link to my video result](./output_images/project_output_ready.mp4)
+Here's a [link to my video result](./project_output_ready.mp4)
 
 ---
 
