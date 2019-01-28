@@ -184,7 +184,7 @@ Here are examples of my result:
 
 ![alt text][image23]
 
-
+ 
 ---
  
 # Pipeline (video)
