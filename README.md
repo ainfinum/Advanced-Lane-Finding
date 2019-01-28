@@ -16,8 +16,8 @@ The goals / steps of this project are the following:
 
 [image1]: ./output_images/calibration1.jpg "Original"
 [image2]: ./output_images/test_undist_cal1.jpg "Undistorted"
-[image3]: ./output_images/bridge_shadow1.jpg "Original"
-[image4]: ./output_images/bridge_shadow1_undistorted.jpg "Undistorted"
+[image3]: ./output_images/test5.jpg "Original"
+[image4]: ./output_images/test5_undistorted.jpg "Undistorted"
 [image5]: ./output_images/warped_image3.png "Warped Perspective Ex. 1"
 [image6]: ./output_images/warped_image1.png "Warped Perspective Ex. 2"
 [image7]: ./output_images/warped_tresholded.png "Warped Perspective Tresholded"
@@ -42,7 +42,7 @@ The goals / steps of this project are the following:
 [image23]: ./output_images/test_images/test6.jpg "Result image 9"
 
 
-[video1]: ./output_images/project_output_ready.mp4 "Video"
+[video1]: ./project_output_ready.mp4 "Video"
 
 
 ## 1. Camera Calibration
@@ -202,15 +202,15 @@ Here's a [link to my video result](./output_images/project_output_ready.mp4)
 
 I faced issues with brights, shadows and the light-gray bridge sections. I spent some time to figure out better tresholds values. Also I found that several channels produced too much noise for the binary image, so I decided to remove them from the combined tresholds. Generally speaking the various gradient and color thresholds only work in a small set of conditions. I think HD video quality can produce much better result. The current implementaion fail on the challenge videos. I tried to change contrast and brightness of the image but it didn't help a lot.
 
-The pipeline might fail on dark or bright parts of the road. Dirty road, heavy rainfall or snow will add a lot of noise to the binary image and it will be hard to correctly identify lane. Cars on the same lane or crossing the line will create a problem as well.
+The pipeline might fail on dark or bright parts of the road. Dirty road, heavy rainfall or snow will add a lot of noise to the binary image and it will be hard to correctly identify the lane. Cars on the same lane or crossing the line will create a problem as well.
 
 The following steps can be done to improve the pipeline:
 
-1. HD or better quality video
-2. Use color correction filters
-3. Monitor of channels activity. Dynamically remove channel data if it produce to much noise (high pixel value)
-4. Roll back to previous detected polynomial if new fits are rejected
-5. Polynomial comparision function. Comparision left and right polynomial fits with previous values
-5. Lane detection with deep learning
+*  HD or better quality video
+*  Use color correction filters
+*  Monitor of channels activity. Dynamically remove channel data if it produce to much noise (high pixel value)
+*  Roll back to previous detected polynomial if new fits are rejected
+*  Polynomial comparision function. Comparision left and right polynomial fits with previous values
+*  Lane detection with deep learning
 
  
