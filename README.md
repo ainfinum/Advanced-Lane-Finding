@@ -137,9 +137,6 @@ In `fit_polynomial()` function (lines #276-294) I used Numpy function np.polyfit
 
 Once the first polynomial has been found I used it for the fast line search method for the next frame. In `search_around_poly()` function (lines #241-274) I just search in a margin around the previous line position.
 
-![alt text][image14]
-
-
 
 
 ## 5. Clculate the radius of curvature of the lane and the position of the vehicle with respect to center.
