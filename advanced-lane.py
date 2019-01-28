@@ -643,7 +643,7 @@ video2 =   False  # True to process challenge_video.mp4
 
 show_combined_thresholds = False # True to show image with combined thresholds
 debug = False
-draw_lines =  True   # True to result image while generation video
+draw_lines =  False   # True to result image while generation video
 
 lane = Lane(mtx,dist)  # Create Lane object and pass mtx,dist for correction of image distortion
 
