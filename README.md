@@ -200,7 +200,7 @@ Here's a [link to my video result](./project_output_ready.mp4)
 #### 1. Problems / issues faced in implementation of this project.  Where the pipeline will likely fail?  What could we do to make it more robust?
 
 
-I faced issues with brights, shadows and the light-gray bridge sections. I spent some time to figure out better tresholds values. Also I found that several channels produced too much noise for the binary image, so I decided to remove them from the combined tresholds. Generally speaking the various gradient and color thresholds only work in a small set of conditions. I think HD video quality can produce much better result. The current implementaion fail on the challenge videos. I tried to change contrast and brightness of the image but it didn't help a lot.
+I faced issues with brights, shadows and the light-gray bridge sections. It took me some time to figure out better tresholds values. Also I found that several channels produced too much noise for the binary image, so I decided to remove them from the combined tresholds. Generally speaking the various gradient and color thresholds only work in a small set of conditions. I think HD video quality can produce much better result. The current implementaion fail on the challenge videos. I tried to change contrast and brightness of the image but it didn't help a lot.
 
 The pipeline might fail on dark or bright parts of the road. Dirty road, heavy rainfall or snow will add a lot of noise to the binary image and it will be hard to correctly identify the lane. Cars on the same lane or crossing the line will create a problem as well.
 
